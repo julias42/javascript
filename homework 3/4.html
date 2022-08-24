@@ -45,11 +45,14 @@
         price: 78,
       },
     ];
-
-    const picture = products.filter(function (jpg) {
-      return products.photos === "jpg";
+    const picture = products.filter(function (picture) {
+      return "photos" in picture && picture.photos.length !== 0;
     });
     console.log(picture);
+    const sortPrice = products.sort(function (price1, price2) {
+      return price1.price - price2.price;
+    });
+    console.log(sortPrice);
   </script>
 </body>
 
