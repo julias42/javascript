@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Homework</title>
 </head>
+
 <body>
-<!--
+  <!-- 
 Обязательное задание.
 
 Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
@@ -47,10 +49,78 @@
 что-нибудь пропустить.
 4. Если непонятно условие - задайте вопрос.
 -->
-<script>
-  "use strict";
+  <script>
+    "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
+    function PostES5(authorPost, textPost, dateTimePost) {
+      this.authorPost = authorPost;
+      this.textPost = textPost;
+      this.dateTimePost = new Date();
+    }
+    PostES5.prototype.edit = function (textPost) {
+      this.textPost = textPost;
+      this.dateTimePost = new Date();
+    }
+    const postES5 = new PostES5(`Артём`,
+      `Здравствуйте, это текст поста!`);
+    console.log(postES5);
+    postES5.edit(`Дратути, это обновлённый текст поста!`)
+    console.log(postES5);
+
+    function AttachedPostES5(authorPost, textPost, highlighted) {
+      PostES5.call(this, authorPost, textPost,);
+      this.highlighted = false;
+      this.dateTimePost = new Date();
+    }
+
+    AttachedPostES5.prototype = Object.create(PostES5.prototype);
+    AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+    AttachedPostES5.prototype.makeTextHighlighted = function () {
+      this.highlighted = true;
+    }
+    const attachedPostES5 = new AttachedPostES5(`Артём`,
+      `Здравствуйте, это текст поста!`);
+    console.log(attachedPostES5);
+    attachedPostES5.makeTextHighlighted(`Дратути, это обновлённый текст поста!`)
+    console.log(attachedPostES5);
+
+    //---------------------------------------------
+
+    class PostES6 {
+      constructor(authorPost, textPost, dateTimePost) {
+        this.authorPost = authorPost;
+        this.textPost = textPost;
+        this.dateTimePost = new Date();
+      }
+      edit(textPost) {
+        this.text = textPost;
+        this.date = new Date();
+      }
+    }
+    const postES6 = new PostES6(`Артём`,
+      `Здравствуйте, это текст поста!`);
+    console.log(postES6);
+    postES6.edit(`Дратути, это обновлённый текст поста!`);
+    console.log(postES6);
+
+    class AttachedPostES6 extends PostES6 {
+      constructor(authorPost, textPost, highlighted) {
+        super(authorPost, textPost);
+        this.highlighted = false;
+      }
+      makeTextHighlighted() {
+        this.highlighted = true;
+      }
+    }
+    const attachedPostES6 = new AttachedPostES5(`Артём`,
+      `Здравствуйте, это текст поста!`);
+    console.log(attachedPostES6);
+    attachedPostES5.makeTextHighlighted(`Дратути, это обновлённый текст поста!`)
+    console.log(attachedPostES5);
+
+
+  </script>
 </body>
+
 </html>
