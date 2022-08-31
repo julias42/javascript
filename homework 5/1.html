@@ -44,8 +44,7 @@
     2. Внутри всех элементов на странице, которые имеют класс "card-link",
     поменяйте текст внутри элемента на "ссылка".
      */
-    const elem = document.querySelectorAll('.card-link');
-    elem.innerText = "ссылка";
+    document.querySelectorAll('.card-link').innerText = "ссылка";
 
     /*
     3. Найти все элементы на странице с классом "card-link", которые лежат в
@@ -75,15 +74,12 @@
     7. Создайте тег `p`, запишите внутри него текст "Привет" и добавьте созданный
     тег в начало элемента, который имеет класс "card".
      */
-    const cardEl = document.querySelector('.card');
-    cardEl.insertAdjacentHTML('afterbegin', '<p>Привет</p>');
-
-
+    document.querySelector('.card').insertAdjacentHTML('afterbegin',
+      '<p>Привет</p>');
     /*
     8. Удалите тег h6 на странице.
      */
-    const h6El = document.querySelector('h6');
-    h6El.remove();
+    document.querySelector('h6').remove();
 
   </script>
 </body>
