@@ -120,7 +120,10 @@
     /*
     7. С помощью JS необходимо изменить цвет заднего фона каждого второго тега li.
      */
-    document.querySelectorAll('li');
+    document.querySelectorAll('li:nth-child(2n)').forEach(elem => {
+      elem.style.backgroundColor = 'red';
+    });
+
 
   </script>
 </body>
