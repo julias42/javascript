@@ -44,7 +44,10 @@
     2. Внутри всех элементов на странице, которые имеют класс "card-link",
     поменяйте текст внутри элемента на "ссылка".
      */
-    document.querySelectorAll('.card-link').innerText = "ссылка";
+    const elem = document.querySelectorAll('.card-link');
+    elem.forEach(elem => {
+      elem.innerText = "ссылка";
+    });
 
     /*
     3. Найти все элементы на странице с классом "card-link", которые лежат в
