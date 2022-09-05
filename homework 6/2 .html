@@ -99,16 +99,29 @@
     данному полю).
     Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
      */
-
-    const inputEl = document.querySelector('.form-control');
-    document.querySelector('form').addEventListener('submit', event => {
-      if (inputEl.value === "") {
-        event.preventDefault();
-        inputEl.classList.add('.error');
-        inputEl.textContent = 'Поле необходимо заполнить';
-      }
+    const formEl = document.querySelector('form');
+    const formInputEls = formEl.querySelectorAll('input, select');
+    formEl.addEventListener('submit', event => {
+      formInputEls.forEach(formInputEl => {
+        if (formInputEl.value === '') {
+          formInputEl.classList.add('error');
+          event.preventDefault();
+        }
+      });
     });
 
+    formEl.addEventListener('input', (event) => {
+      if (!event.target.classList.contains('form-control')) {
+        return;
+      }
+      event.target.value === ''
+        ? event.target.classList.add('error')
+        : event.target.classList.remove('error');
+    });
+    //вопрос)) почему когда мы ищем по классу через querySelector,
+    //я ставлю точку и у меня ничего не работает!
+    //в каких случаях нужно писать именно с точкой?
+    //пример: if (!event.target.classList.contains('.form-control')) {
   </script>
 </body>
 
